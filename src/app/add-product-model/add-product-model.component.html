@@ -1,0 +1,49 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">ADD PRODUCT(Model Driven Form)</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <form novalidate [formGroup]= "addProductForm">
+                    <div class="form-group">
+                      <label for="productName">Product Name </label>
+                      <input type="text" name="productName" class="form-control" 
+                                    formControlName="productName" >
+                                    [ngClass]="{ 'is-invalid':productName.errors && (productName.touched || productName.dirty),'is-valid' :productName.valid}">
+                    <div class="invalid-feedback">
+                        <strong *ngIf = "productName.errors?.['required']">productName is required </strong>
+                        <strong *ngIf = "productName.errors?.['minlength']">productName Length must be greater than {{productName.errors?.['minlength'].requiredLength}} character
+                            {{productName.errors?.['minlength'].requiredLength - productName.errors?.['minlength'].actualLength}}
+                            more characters required
+                        </strong>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productPrice">Product Price </label>
+                        <input type="text" name="productPrice" class="form-control"
+                                    formControlName="productPrice" >
+                    </div>
+                    <div class="form-group">
+                        <label for="productQty">Product Quantity </label>
+                        <input type="text" name="productQty" class="form-control"
+                                    formControlName="productQty">
+                    </div>
+                    <div class="form-group">
+                        <label for="productBrand">Product Brand</label>
+                        <input type="text" name="productBrand" class="form-control"
+                                    formControlName="productBrand">
+                    </div>
+                    <button type='submit' class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-default">Reset</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <label>
+                    <strong>addProductForm : JSON</strong>
+                </label>
+                <pre class="alert alert-dark" role="alert">
+                    {{addProductForm.value | json}}
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
